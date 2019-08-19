@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using TestNinja.Mocking;
 
-namespace NUnitTestProject1.Mocking
+namespace TestNinja.UnitTests.Mocking
 {
 	[TestFixture]
 	public class VideoServiceTests

@@ -1,6 +1,6 @@
 ﻿using TestNinja.Mocking;
 
-namespace NUnitTestProject1.Mocking
+namespace TestNinja.UnitTests.Mocking
 {
 	// comentado para usar MOQ
 	//public class FakeFileReader : IFileReader

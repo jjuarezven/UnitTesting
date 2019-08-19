@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using TestNinja.Fundamentals;
 
-namespace Tests
+namespace TestNinja.UnitTests
 {
 	[TestFixture]
 	public class FizzBuzzTests

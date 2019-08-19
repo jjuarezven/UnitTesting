@@ -4,7 +4,7 @@ using System.Net;
 using TestNinja.Mocking;
 
 
-namespace NUnitTestProject1.Mocking
+namespace TestNinja.UnitTests.Mocking
 {
 	[TestFixture]
 	public class InstallerHelperTests

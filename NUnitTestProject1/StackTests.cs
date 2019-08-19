@@ -2,7 +2,7 @@
 using System;
 using TestNinja.Fundamentals;
 
-namespace Tests
+namespace TestNinja.UnitTests
 {
 	[TestFixture]
 	public class StackTests
