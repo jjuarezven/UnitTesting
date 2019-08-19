@@ -31,20 +31,32 @@ namespace TestNinja.UnitTests.Mocking
 		}
 
 		[Test]
-		public void OverlappingBookingsExist_BookingStartAndFinishesBeforeAnExistingBookin_ReturnEmptyString()
+		public void OverlappingBookingsExist_BookingStartAndFinishesBeforeAnExistingBooking_ReturnEmptyString()
 		{
 			var result = BookingHelper.OverlappingBookingsExist(new Booking 
 			{ 
 				Id = 1, 
 				ArrivalDate = Before(existingBooking.ArrivalDate, days: 2), 
-				DepartureDate = GenerateDate(2017, 1, 14, false) 
+				DepartureDate = Before(existingBooking.ArrivalDate) 
 			}, repository.Object);
 			Assert.That(result, Is.Empty);
 		}
 
+		[Test]
+		public void OverlappingBookingsExist_BookingStartsBeforeAndFinishesInTheMiddleOfAnExistingBooking_ReturnExistingBookingsReference()
+		{
+			var result = BookingHelper.OverlappingBookingsExist(new Booking
+			{
+				Id = 1,
+				ArrivalDate = Before(existingBooking.ArrivalDate),
+				DepartureDate = After(existingBooking.ArrivalDate)
+			}, repository.Object);
+			Assert.That(result, Is.EqualTo(existingBooking.Reference));
+		}
+
 		private DateTime GenerateDate(int year, int month, int day, bool arrival) 
 		{
-			var time = arrival? new TimeSpan(14, 0, 0) : new TimeSpan(10, 0, 0);
+			var time = arrival ? new TimeSpan(14, 0, 0) : new TimeSpan(10, 0, 0);
 			return new DateTime(year, month, day) + time;
 		}
 
